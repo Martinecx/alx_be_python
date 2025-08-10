@@ -1,19 +1,26 @@
-day = input("Enter the day of the week: ").lower()
+# Get user inputs
+task = input("Enter your task: ")
+time_bound = input("Is it time-bound? (yes/no): ")
+priority = input("Priority (high/medium/low): ")
 
-match day:
-    case "monday":
-        print("Start your week with a positive mindset!")
-    case "tuesday":
-        print("Keep going strong!")
-    case "wednesday":
-        print("Halfway through the week!")
-    case "thursday":
-        print("Almost there!")
-    case "friday":
-        print("Finish the week strong!")
-    case "saturday":
-        print("Enjoy your weekend!")
-    case "sunday":
-        print("Rest and recharge for the week ahead!")
+# Modify reminder message if time-bound
+if time_bound.lower() == "yes":
+    urgency_note = "This task requires immediate attention!"
+else:
+    urgency_note = "This task can be done at your convenience."
+
+# Match case for priority level
+match priority.lower():
+    case "high":
+        priority_note = "High priority - handle this as soon as possible."
+    case "medium":
+        priority_note = "Medium priority - try to get it done soon."
+    case "low":
+        priority_note = "Low priority - complete it when you have time."
     case _:
-        print("Invalid day entered.")
+        priority_note = "Priority not recognized."
+
+# Final customized reminder
+print(f"Reminder: {task}")
+print(priority_note)
+print(urgency_note)
