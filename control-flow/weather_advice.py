@@ -1,11 +1,12 @@
-# weather_advice.py
-weather = input("What's the weather like today? (sunny/rainy/cold): ").lower()
+temperature = float(input("Enter the temperature in Celsius: "))
 
-if weather == "sunny":
-    print("Wear a t-shirt and sunglasses.")
-elif weather == "rainy":
-    print("Don't forget your umbrella and a raincoat.")
-elif weather == "cold":
-    print("Make sure to wear a warm coat and a scarf.")
+if temperature > 30:
+    print("It's hot outside. Stay hydrated!")
+elif temperature >= 20:
+    print("The weather is warm. Enjoy your day!")
+elif temperature >= 10:
+    print("It's a bit chilly. Wear a jacket!")
 else:
-    print("Sorry, I don't have recommendations for this weather.")
+    print("It's cold. Dress warmly!")
+
+
