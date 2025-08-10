@@ -1,26 +1,24 @@
-# Get user inputs
-task = input("Enter your task: ")
-time_bound = input("Is it time-bound? (yes/no): ")
-priority = input("Priority (high/medium/low): ")
+# daily_reminder.py
 
-# Modify reminder message if time-bound
-if time_bound.lower() == "yes":
-    urgency_note = "This task requires immediate attention!"
-else:
-    urgency_note = "This task can be done at your convenience."
+# Example inputs
+task = "Finish project report"
+priority = "high"  # could be 'low', 'medium', or 'high'
+time_bound = True  # True if immediate action required
 
-# Match case for priority level
-match priority.lower():
+# Match statement for priority
+match priority:
     case "high":
-        priority_note = "High priority - handle this as soon as possible."
+        reminder = f"⚠️ High priority: {task} — needs urgent attention!"
     case "medium":
-        priority_note = "Medium priority - try to get it done soon."
+        reminder = f"📌 Medium priority: {task} — plan to do it soon."
     case "low":
-        priority_note = "Low priority - complete it when you have time."
+        reminder = f"📝 Low priority: {task} — can be done later."
     case _:
-        priority_note = "Priority not recognized."
+        reminder = f"Task: {task} — priority not set."
 
-# Final customized reminder
-print(f"Reminder: {task}")
-print(priority_note)
-print(urgency_note)
+# If statement for time sensitivity
+if time_bound:
+    reminder += " ⏳ This is time-sensitive! Take immediate action."
+
+# Customized output
+print(reminder)
