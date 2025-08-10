@@ -1,4 +1,10 @@
-rows = int(input("Enter the number of rows for the pattern: "))
+# Get size from user
+size = int(input("Enter the size of the pattern: "))
 
-for i in range(1, rows + 1):
-    print("*" * i)
+# Initialize counter
+i = 1
+
+# While loop to draw the pattern
+while i <= size:
+    print("*" * i)  # Draw pattern line with i stars
+    i += 1
