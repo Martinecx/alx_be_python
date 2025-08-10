@@ -1,28 +1,38 @@
-# daily_reminder.py
+import time
+from datetime import datetime
 
-# Get task priority from user
-priority = input("Enter task priority (high, medium, low): ").lower()
 
-# Get time sensitivity from user
-time_bound = input("Is the task time-bound? (yes/no): ").lower()
+def show_reminder(message):
+    """Display a reminder message with timestamp."""
+    current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    print(f"[{current_time}] Reminder: {message}")
 
-# Initialize reminder message
-reminder = ""
 
-# Match case statement to provide customized reminder based on priority
-match priority:
-    case "high":
-        reminder = "⚡ High priority task! Complete it as soon as possible."
-    case "medium":
-        reminder = "⏳ Medium priority task. Plan to finish it soon."
-    case "low":
-        reminder = "📝 Low priority task. Do it when you have free time."
-    case _:
-        reminder = "❓ Unknown priority. Please set a valid one."
+def draw_pattern(rows=5):
+    """Draws a simple star pattern."""
+    for i in range(1, rows + 1):
+        print("* " * i)
 
-# If statement to modify reminder if the task is time-bound
-if time_bound == "yes":
-    reminder += " ⏰ Immediate action required due to time sensitivity!"
 
-# Provide a customized reminder
-print(f"Reminder: {reminder}")
+def daily_routine():
+    """Main daily reminder routine."""
+    reminders = [
+        "Drink water",
+        "Take a short walk",
+        "Check your posture",
+        "Review your to-do list"
+    ]
+
+    for reminder in reminders:
+        show_reminder(reminder)
+        time.sleep(1)  # Short delay for demo; can be changed
+
+    print("\nPattern Drawing:")
+    draw_pattern(5)
+
+
+if __name__ == "__main__":
+    try:
+        daily_routine()
+    except KeyboardInterrupt:
+        print("\nReminder program stopped.")
