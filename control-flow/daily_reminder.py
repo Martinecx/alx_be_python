@@ -6,29 +6,28 @@ def main():
     priority = input("Priority (high/medium/low): ").strip().lower()
     time_bound = input("Is it time-bound? (yes/no): ").strip().lower()
 
-    # Use match-case for priority handling
+    # Process based on priority
     match priority:
         case "high":
-            message = f"Reminder: '{task}' is a high priority task"
+            print(f"Reminder: '{task}' is a high priority task", end="")
         case "medium":
-            message = f"Reminder: '{task}' is a medium priority task"
+            print(f"Reminder: '{task}' is a medium priority task", end="")
         case "low":
-            # For low priority, if not time-bound we show the Note and exit
             if time_bound == 'yes':
-                message = f"Reminder: '{task}' is a low priority task"
+                print(f"Reminder: '{task}' is a low priority task", end="")
             else:
                 print(f"Note: '{task}' is a low priority task. Consider completing it when you have free time.")
                 print("\nWell done on completing this project! Let the world hear about this milestone achieved.")
                 return
         case _:
-            message = f"Reminder: '{task}' has an unspecified priority"
+            print(f"Reminder: '{task}' has an unspecified priority", end="")
 
-    # **Required by the grader**: explicit check of time_bound == 'yes'
+    # Explicit time-bound check as required
     if time_bound == 'yes':
-        message += " that requires immediate attention today!"
+        print(" that requires immediate attention today!")
+    else:
+        print()  # move to a new line if no extra message
 
-    # Output final message
-    print(message)
     print("\nWell done on completing this project! Let the world hear about this milestone achieved.")
 
 
