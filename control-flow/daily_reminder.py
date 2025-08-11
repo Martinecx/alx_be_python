@@ -1,38 +1,37 @@
-import time
-from datetime import datetime
+#!/usr/bin/env python3
 
+def main():
+    # Prompt for inputs
+    task = input("Enter your task: ").strip()
+    priority = input("Priority (high/medium/low): ").strip().lower()
+    time_bound = input("Is it time-bound? (yes/no): ").strip().lower()
 
-def show_reminder(message):
-    """Display a reminder message with timestamp."""
-    current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    print(f"[{current_time}] Reminder: {message}")
+    immediate = time_bound == "yes"
 
+    # Process based on priority
+    match priority:
+        case "high":
+            message = f"Reminder: '{task}' is a high priority task"
+        case "medium":
+            message = f"Reminder: '{task}' is a medium priority task"
+        case "low":
+            if immediate:
+                message = f"Reminder: '{task}' is a low priority task"
+            else:
+                print(f"Note: '{task}' is a low priority task. Consider completing it when you have free time.")
+                print("\nWell done on completing this project! Let the world hear about this milestone achieved.")
+                return
+        case _:
+            message = f"Reminder: '{task}' has an unspecified priority"
 
-def draw_pattern(rows=5):
-    """Draws a simple star pattern."""
-    for i in range(1, rows + 1):
-        print("* " * i)
+    # Add time sensitivity
+    if immediate:
+        message += " that requires immediate attention today!"
 
-
-def daily_routine():
-    """Main daily reminder routine."""
-    reminders = [
-        "Drink water",
-        "Take a short walk",
-        "Check your posture",
-        "Review your to-do list"
-    ]
-
-    for reminder in reminders:
-        show_reminder(reminder)
-        time.sleep(1)  # Short delay for demo; can be changed
-
-    print("\nPattern Drawing:")
-    draw_pattern(5)
+    # Output final message
+    print(message)
+    print("\nWell done on completing this project! Let the world hear about this milestone achieved.")
 
 
 if __name__ == "__main__":
-    try:
-        daily_routine()
-    except KeyboardInterrupt:
-        print("\nReminder program stopped.")
+    main()
